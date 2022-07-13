@@ -71,3 +71,13 @@ function playRound(playerSelection, computerSelection) {
 // const playerSelection = 'rOck';
 // const computerSelection = computerPlay();
 // console.log(playRound(playerSelection, computerSelection));
+
+// game: plays 5 rounds and records the score
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt('Choose your weapon!');
+        let computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
