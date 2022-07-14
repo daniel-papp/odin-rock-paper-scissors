@@ -1,4 +1,4 @@
-console.log("Hello Game");
+console.log("Let's play a game of Rock Paper Scissors!");
 
 // ----- Function Declarations -----
 
@@ -83,7 +83,13 @@ function game() {
         } else if (winnerMessage.includes('Invalid')) {
             i--;
         }
+        console.log(`Round ${i + 1}`);
         console.log(winnerMessage);
         console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
     }
+    (playerScore > computerScore) ? console.log('Congratulations, you won the game!') : console.log('Unfortunately, you lost the game.');
+    console.log(`Final score: Player: ${playerScore} - Computer: ${computerScore}`);
 }
+
+
+game(); 
