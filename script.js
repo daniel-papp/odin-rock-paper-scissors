@@ -36,8 +36,6 @@ function playRound(playerSelection, computerSelection) {
             winner = 'You Lose! Paper beats Rock';
         } else if (computerSelection === 'scissors') {
             winner = 'You Win! Rock beats Scissors';
-        } else {
-            winner = 'Invalid choice, try again.'
         }
     } else if (playerSelection === 'paper') {
         if (computerSelection === 'rock') {
@@ -46,8 +44,6 @@ function playRound(playerSelection, computerSelection) {
             winner = 'Tie!';
         } else if (computerSelection === 'scissors') {
             winner = 'You Lose! Scissors beats Paper';
-        } else {
-            winner = 'Invalid choice, try again.'
         }
     } else if (playerSelection === 'scissors') {
         if (computerSelection === 'rock') {
@@ -56,8 +52,6 @@ function playRound(playerSelection, computerSelection) {
             winner = 'You Win! Scissors beats Paper';
         } else if (computerSelection === 'scissors') {
             winner = 'Tie!';
-        } else {
-            winner = 'Invalid choice, try again.'
         }
     } else {
         winner = 'Invalid choice, try again.'
@@ -91,5 +85,4 @@ function game() {
     console.log(`Final score: Player: ${playerScore} - Computer: ${computerScore}`);
 }
 
-
-game(); 
+game();
