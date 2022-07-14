@@ -37,7 +37,7 @@ function playRound(playerSelection, computerSelection) {
         } else if (computerSelection === 'scissors') {
             winner = 'You Win! Rock beats Scissors';
         } else {
-            winner = 'Somebody cheated!'
+            winner = 'Invalid choice, try again.'
         }
     } else if (playerSelection === 'paper') {
         if (computerSelection === 'rock') {
@@ -47,7 +47,7 @@ function playRound(playerSelection, computerSelection) {
         } else if (computerSelection === 'scissors') {
             winner = 'You Lose! Scissors beats Paper';
         } else {
-            winner = 'Somebody cheated!'
+            winner = 'Invalid choice, try again.'
         }
     } else if (playerSelection === 'scissors') {
         if (computerSelection === 'rock') {
@@ -57,27 +57,33 @@ function playRound(playerSelection, computerSelection) {
         } else if (computerSelection === 'scissors') {
             winner = 'Tie!';
         } else {
-            winner = 'Somebody cheated!'
+            winner = 'Invalid choice, try again.'
         }
     } else {
-        winner = 'Somebody cheated!'
+        winner = 'Invalid choice, try again.'
     }
 
     return winner;
 
 }
 
-// Testing the playRound function
-// const playerSelection = 'rOck';
-// const computerSelection = computerPlay();
-// console.log(playRound(playerSelection, computerSelection));
-
 // game: plays 5 rounds and records the score
 
 function game() {
+    let playerScore = 0;
+    let computerScore = 0;
     for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt('Choose your weapon!');
+        let playerSelection = prompt('Make your choice!');
         let computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
+        let winnerMessage = playRound(playerSelection, computerSelection);
+        if (winnerMessage.includes('Win!')) {
+            playerScore++;
+        } else if (winnerMessage.includes('Lose!')) {
+            computerScore++;
+        } else if (winnerMessage.includes('Invalid')) {
+            i--;
+        }
+        console.log(winnerMessage);
+        console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
     }
 }
