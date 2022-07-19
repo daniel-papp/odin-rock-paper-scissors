@@ -85,4 +85,7 @@ function game() {
     console.log(`Final score: Player: ${playerScore} - Computer: ${computerScore}`);
 }
 
-game();
+// Add a button to start the game
+
+const startButton = document.querySelector('#start-game');
+startButton.addEventListener('click', game);
