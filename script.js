@@ -57,35 +57,49 @@ function playRound(playerSelection, computerSelection) {
         winner = 'Invalid choice, try again.'
     }
 
+    console.log(winner);
     return winner;
 
 }
 
 // game: plays 5 rounds and records the score
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt('Make your choice!');
-        let computerSelection = computerPlay();
-        let winnerMessage = playRound(playerSelection, computerSelection);
-        if (winnerMessage.includes('Win!')) {
-            playerScore++;
-        } else if (winnerMessage.includes('Lose!')) {
-            computerScore++;
-        } else if (winnerMessage.includes('Invalid')) {
-            i--;
-        }
-        console.log(`Round ${i + 1}`);
-        console.log(winnerMessage);
-        console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
-    }
-    (playerScore > computerScore) ? console.log('Congratulations, you won the game!') : console.log('Unfortunately, you lost the game.');
-    console.log(`Final score: Player: ${playerScore} - Computer: ${computerScore}`);
-}
+// function game() {
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     for (let i = 0; i < 5; i++) {
+//         let playerSelection = prompt('Make your choice!');
+//         let computerSelection = computerPlay();
+//         let winnerMessage = playRound(playerSelection, computerSelection);
+//         if (winnerMessage.includes('Win!')) {
+//             playerScore++;
+//         } else if (winnerMessage.includes('Lose!')) {
+//             computerScore++;
+//         } else if (winnerMessage.includes('Invalid')) {
+//             i--;
+//         }
+//         console.log(`Round ${i + 1}`);
+//         console.log(winnerMessage);
+//         console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+//     }
+//     (playerScore > computerScore) ? console.log('Congratulations, you won the game!') : console.log('Unfortunately, you lost the game.');
+//     console.log(`Final score: Player: ${playerScore} - Computer: ${computerScore}`);
+// }
 
 // Add a button to start the game
 
-const startButton = document.querySelector('#start-game');
-startButton.addEventListener('click', game);
+// const startButton = document.querySelector('#start-game');
+// startButton.addEventListener('click', game);
+
+
+
+// Add 3 buttons for player selection
+
+const rockButton = document.querySelector('#rock-btn');
+rockButton.addEventListener('click', () => playRound('rock', computerPlay()));
+
+const paperButton = document.querySelector('#paper-btn');
+paperButton.addEventListener('click', () => playRound('paper', computerPlay()));
+
+const scissorsButton = document.querySelector('#scissors-btn');
+scissorsButton.addEventListener('click', () => playRound('scissors', computerPlay()));
