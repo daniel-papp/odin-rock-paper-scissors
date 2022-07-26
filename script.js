@@ -59,10 +59,7 @@ function playRound(playerSelection, computerSelection) {
 
 // Add display for round results
 
-    const roundResultText = document.createElement('p');
-    roundResultText.textContent = winner;
-    const display = document.querySelector('#display');
-    display.appendChild(roundResultText);
+
     return winner;
 
 }
@@ -101,13 +98,13 @@ function playRound(playerSelection, computerSelection) {
 // Add 3 buttons for player selection
 
 const rockButton = document.querySelector('#rock-btn');
-rockButton.addEventListener('click', () => keepScore('rock'));
+rockButton.addEventListener('click', () => playGame('rock'));
 
 const paperButton = document.querySelector('#paper-btn');
-paperButton.addEventListener('click', () => keepScore('paper'));
+paperButton.addEventListener('click', () => playGame('paper'));
 
 const scissorsButton = document.querySelector('#scissors-btn');
-scissorsButton.addEventListener('click', () => keepScore('scissors'));
+scissorsButton.addEventListener('click', () => playGame('scissors'));
 
 
 // Add event listener to buttons for future scorekeeping
@@ -119,22 +116,55 @@ scissorsButton.addEventListener('click', () => keepScore('scissors'));
 
 // Function for keeping score
 
+// console.log(playRound(playerSelection, computerPlay()));
+function keepScore(playerSelection) {
+    currentRound++;
+    let winnerMessage = playRound(playerSelection, computerPlay());
+    if (winnerMessage.includes('Win!')) {
+        playerScore++;
+    } else if (winnerMessage.includes('Lose!')) {
+            computerScore++;
+        }
+             
+        // Display info on the DOM
+        const display = document.querySelector('#display');
+        const roundCountText = document.createElement('p');
+        roundCountText.textContent = `Round ${currentRound}`;
+        display.appendChild(roundCountText);
+        const roundResultText = document.createElement('p');
+        roundResultText.textContent = winnerMessage;
+        display.appendChild(roundResultText);
+        const roundScoretText = document.createElement('p');
+        roundScoretText.textContent = `Player: ${playerScore} - Computer: ${computerScore}`;
+        display.appendChild(roundScoretText);    
+    }
+    
+    
+    // Function for playing an entire game (final score after 5 rounds)
+    
 let playerScore = 0;
 let computerScore = 0;
 let currentRound = 0;
-function keepScore(playerSelection) {
-    // console.log(playRound(playerSelection, computerPlay()));
-    let winnerMessage = playRound(playerSelection, computerPlay());
-        if (winnerMessage.includes('Win!')) {
-            playerScore++;
-        } else if (winnerMessage.includes('Lose!')) {
-            computerScore++;
+function playGame(playerSelection) {
+    keepScore(playerSelection);
+    if (currentRound === 5) {
+        const display = document.querySelector('#display');
+        const finalResultText = document.createElement('p');
+        const finalScoreText = document.createElement('p');
+        if (playerScore > computerScore) {
+            finalResultText.textContent = 'Congratulations, you won the game!';
+        } else if (playerScore < computerScore) {
+            finalResultText.textContent = 'Unfortunately, you lost the game.';
+        } else {
+            finalResultText.textContent = 'It\'s a tie!';
         }
-    // console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
-    const roundScoretText = document.createElement('p');
-    roundScoretText.textContent = `Player: ${playerScore} - Computer: ${computerScore}`;
-    const display = document.querySelector('#display');
-    display.appendChild(roundScoretText);    
+        display.appendChild(finalResultText);
+        finalScoreText.textContent = `Final score: Player: ${playerScore} - Computer: ${computerScore}`;
+        display.appendChild(finalScoreText);
+    }
 }
 
-// Display round results and score on the DOM
+
+
+
+// commit message: Add round count and final results
