@@ -1,4 +1,4 @@
-console.log("Let's play a game of Rock Paper Scissors!");
+    console.log("Let's play a game of Rock Paper Scissors!");
 
 // ----- Function Declarations -----
 
@@ -57,7 +57,12 @@ function playRound(playerSelection, computerSelection) {
         winner = 'Invalid choice, try again.'
     }
 
-    console.log(winner);
+// Add display for round results
+
+    const roundResultText = document.createElement('p');
+    roundResultText.textContent = winner;
+    const display = document.querySelector('#display');
+    display.appendChild(roundResultText);
     return winner;
 
 }
