@@ -101,10 +101,40 @@ function playRound(playerSelection, computerSelection) {
 // Add 3 buttons for player selection
 
 const rockButton = document.querySelector('#rock-btn');
-rockButton.addEventListener('click', () => playRound('rock', computerPlay()));
+rockButton.addEventListener('click', () => keepScore('rock'));
 
 const paperButton = document.querySelector('#paper-btn');
-paperButton.addEventListener('click', () => playRound('paper', computerPlay()));
+paperButton.addEventListener('click', () => keepScore('paper'));
 
 const scissorsButton = document.querySelector('#scissors-btn');
-scissorsButton.addEventListener('click', () => playRound('scissors', computerPlay()));
+scissorsButton.addEventListener('click', () => keepScore('scissors'));
+
+
+// Add event listener to buttons for future scorekeeping
+
+// const selectButtons = document.querySelectorAll('.button');
+// selectButtons.forEach(button => button.addEventListener('click', keepScore));
+
+
+
+// Function for keeping score
+
+let playerScore = 0;
+let computerScore = 0;
+let currentRound = 0;
+function keepScore(playerSelection) {
+    // console.log(playRound(playerSelection, computerPlay()));
+    let winnerMessage = playRound(playerSelection, computerPlay());
+        if (winnerMessage.includes('Win!')) {
+            playerScore++;
+        } else if (winnerMessage.includes('Lose!')) {
+            computerScore++;
+        }
+    // console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+    const roundScoretText = document.createElement('p');
+    roundScoretText.textContent = `Player: ${playerScore} - Computer: ${computerScore}`;
+    const display = document.querySelector('#display');
+    display.appendChild(roundScoretText);    
+}
+
+// Display round results and score on the DOM
