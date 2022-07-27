@@ -61,3 +61,12 @@ header p {
     background-color: var(--main-color);
     color: var(--base-color);
 }
+
+#display {
+    padding: 35px;
+}
+
+#display p {
+    margin: 10px;
+    font-weight: bolder;
+}
