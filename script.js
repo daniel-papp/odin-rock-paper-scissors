@@ -197,6 +197,7 @@ function displayNewGame() {
     }
     const newGameButton = document.createElement('button');
     newGameButton.setAttribute('id', 'new-game-btn');
+    newGameButton.classList.add('button');
     newGameButton.textContent = 'New Game';
     buttons.appendChild(newGameButton);
 

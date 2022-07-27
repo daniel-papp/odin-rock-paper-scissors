@@ -10,6 +10,7 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
+    font-size: 16px;
 }
 
 html {
@@ -21,13 +22,15 @@ body {
     width: 80%;
     height: 100%;
     margin: 0 auto;
+    text-align: center;
+
     background-color: var(--bg-color);
 }
 
 h1 {
     color: var(--main-color);
     margin-bottom: 8px;
-    
+    font-size: 2em;
 }
 
 p {
@@ -35,6 +38,20 @@ p {
 }
 
 header {
-    text-align: center;
     padding: 20px;
+}
+
+header p {
+    font-size: 0.8em;
+}
+
+.button {
+    width: 140px;
+    padding: 6px 22px;
+    height: auto;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--base-color);
+    color: var(--text-color);
+    margin: 10px;
 }
