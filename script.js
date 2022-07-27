@@ -122,6 +122,35 @@ function playGame(playerSelection) {
     }
 }
 
+// startGame: displays the player selection buttons
+
+function startGame() {
+    const buttons = document.querySelector('div.buttons');
+
+    const rockButton = document.createElement('button');
+    rockButton.setAttribute('id', 'rock-btn');
+    rockButton.classList.add('button');
+    rockButton.textContent = 'ROCK';
+    buttons.appendChild(rockButton);
+    rockButton.addEventListener('click', () => playGame('rock'));
+
+    const paperButton = document.createElement('button');
+    paperButton.setAttribute('id', 'paper-btn');
+    paperButton.classList.add('button');
+    paperButton.textContent = 'PAPER';
+    buttons.appendChild(paperButton);
+    paperButton.addEventListener('click', () => playGame('paper'));
+
+    const scissorsButton = document.createElement('button');
+    scissorsButton.setAttribute('id', 'scissors-btn');
+    scissorsButton.classList.add('button');
+    scissorsButton.textContent = 'SCISSORS';
+    buttons.appendChild(scissorsButton);
+    scissorsButton.addEventListener('click', () => playGame('scissors'));
+
+    document.getElementById('start-game-btn').remove();
+}
+
 // displayNewGame: clears the selection buttons and creates a new game button
 
 function displayNewGame() {
@@ -142,13 +171,5 @@ let currentRound = 0;
 
 // ----- DOM Events -----
 
-// Add 3 buttons for player selection an
-
-const rockButton = document.querySelector('#rock-btn');
-rockButton.addEventListener('click', () => playGame('rock'));
-
-const paperButton = document.querySelector('#paper-btn');
-paperButton.addEventListener('click', () => playGame('paper'));
-
-const scissorsButton = document.querySelector('#scissors-btn');
-scissorsButton.addEventListener('click', () => playGame('scissors'));
+const startGameButton = document.querySelector('#start-game-btn');
+startGameButton.addEventListener('click', () => startGame());
