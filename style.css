@@ -43,6 +43,7 @@ header {
 
 header p {
     font-size: 0.8em;
+    font-weight: bold;
 }
 
 .button {
@@ -54,4 +55,9 @@ header p {
     background-color: var(--base-color);
     color: var(--text-color);
     margin: 10px;
+}
+
+.button:hover {
+    background-color: var(--main-color);
+    color: var(--base-color);
 }
