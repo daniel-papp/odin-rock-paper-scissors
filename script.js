@@ -113,12 +113,28 @@ function playGame(playerSelection) {
         while (display.firstChild) {
             display.removeChild(display.lastChild);
         }
-        
+
         display.appendChild(finalResultText);
         finalScoreText.textContent = `Final score: Player: ${playerScore} - Computer: ${computerScore}`;
         display.appendChild(finalScoreText);
+
+        displayNewGame();
     }
 }
+
+// displayNewGame: clears the selection buttons and creates a new game button
+
+function displayNewGame() {
+    const buttons = document.querySelector('div.buttons');
+    while (buttons.firstChild) {
+        buttons.removeChild(buttons.lastChild);
+    }
+    const newGameButton = document.createElement('button');
+    newGameButton.setAttribute('id', 'new-game-btn');
+    newGameButton.textContent = 'New Game';
+    buttons.appendChild(newGameButton);
+}
+
 
 let playerScore = 0;
 let computerScore = 0;
