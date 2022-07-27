@@ -151,6 +151,43 @@ function startGame() {
     document.getElementById('start-game-btn').remove();
 }
 
+// startNewGame: displays the player selection buttons again and clears results
+
+function startNewGame() {
+    const buttons = document.querySelector('div.buttons');
+
+    const rockButton = document.createElement('button');
+    rockButton.setAttribute('id', 'rock-btn');
+    rockButton.classList.add('button');
+    rockButton.textContent = 'ROCK';
+    buttons.appendChild(rockButton);
+    rockButton.addEventListener('click', () => playGame('rock'));
+
+    const paperButton = document.createElement('button');
+    paperButton.setAttribute('id', 'paper-btn');
+    paperButton.classList.add('button');
+    paperButton.textContent = 'PAPER';
+    buttons.appendChild(paperButton);
+    paperButton.addEventListener('click', () => playGame('paper'));
+
+    const scissorsButton = document.createElement('button');
+    scissorsButton.setAttribute('id', 'scissors-btn');
+    scissorsButton.classList.add('button');
+    scissorsButton.textContent = 'SCISSORS';
+    buttons.appendChild(scissorsButton);
+    scissorsButton.addEventListener('click', () => playGame('scissors'));
+
+    document.getElementById('new-game-btn').remove();
+
+    while (display.firstChild) {
+        display.removeChild(display.lastChild);
+    }
+
+    playerScore = 0;
+    computerScore = 0;
+    currentRound = 0;
+}
+
 // displayNewGame: clears the selection buttons and creates a new game button
 
 function displayNewGame() {
@@ -162,6 +199,9 @@ function displayNewGame() {
     newGameButton.setAttribute('id', 'new-game-btn');
     newGameButton.textContent = 'New Game';
     buttons.appendChild(newGameButton);
+
+    newGameButton.addEventListener('click', () => startNewGame());
+
 }
 
 
