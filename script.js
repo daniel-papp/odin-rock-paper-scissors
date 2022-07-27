@@ -72,6 +72,13 @@ function keepScore(playerSelection) {
 
     const display = document.querySelector('#display');
 
+    // const existingText = document.querySelector('#display p');
+    // console.log(existingText);
+
+    while (display.firstChild) {
+        display.removeChild(display.lastChild);
+    }
+
     const roundCountText = document.createElement('p');
     roundCountText.textContent = `Round ${currentRound}`;
     display.appendChild(roundCountText);
@@ -103,6 +110,10 @@ function playGame(playerSelection) {
             finalResultText.textContent = 'It\'s a tie!';
         }
 
+        while (display.firstChild) {
+            display.removeChild(display.lastChild);
+        }
+        
         display.appendChild(finalResultText);
         finalScoreText.textContent = `Final score: Player: ${playerScore} - Computer: ${computerScore}`;
         display.appendChild(finalScoreText);
